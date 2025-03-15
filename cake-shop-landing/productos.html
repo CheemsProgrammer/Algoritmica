@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">Mi Sitio</a>
+            <div class="nav-links">
+                <a href="servicios.html">Servicios</a>
+                <a href="productos.html">Productos</a>
+                <a href="contacto.html">Contacto</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="welcome-section">
+        <h1>Nuestros Productos</h1>
+        <p class="welcome-text">
+            Explora nuestra selección de componentes de computadora de alta calidad.
+        </p>
+
+        <div class="slider-container">
+            <div class="slider">
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" alt="Memoria RAM">
+                    <div class="slide-content">
+                        <h3>Memoria RAM DDR4</h3>
+                        <p>32GB de alta velocidad para máximo rendimiento</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1591405351990-4726e331f141?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" alt="Procesador">
+                    <div class="slide-content">
+                        <h3>Procesador de Última Generación</h3>
+                        <p>Intel Core i9 12900K para gaming y trabajo profesional</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1587202372634-32705e3bf49c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" alt="Tarjeta de Video">
+                    <div class="slide-content">
+                        <h3>Tarjeta Gráfica RTX</h3>
+                        <p>NVIDIA GeForce RTX 4080 para gaming extremo</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-buttons">
+                <button class="slider-button active" onclick="goToSlide(0)"></button>
+                <button class="slider-button" onclick="goToSlide(1)"></button>
+                <button class="slider-button" onclick="goToSlide(2)"></button>
+            </div>
+        </div>
+
+        <a href="index.html" class="cta-button">Volver al Inicio</a>
+    </main>
+
+    <script>
+        let currentSlide = 0;
+        const slider = document.querySelector('.slider');
+        const buttons = document.querySelectorAll('.slider-button');
+        
+        function goToSlide(slideIndex) {
+            currentSlide = slideIndex;
+            slider.style.transform = `translateX(-${currentSlide * 33.333}%)`;
+            
+            // Update active button
+            buttons.forEach((button, index) => {
+                if (index === currentSlide) {
+                    button.classList.add('active');
+                } else {
+                    button.classList.remove('active');
+                }
+            });
+        }
+
+        // Auto advance slides
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % 3;
+            goToSlide(currentSlide);
+        }, 5000);
+    </script>
+</body>
+</html>
